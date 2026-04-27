@@ -28,51 +28,14 @@ This module creates a production-ready RDS MySQL database environment within a d
 
 ## Usage
 
-### Basic Example
+To use this module, simply **modify the `terraform.tfvars` file** with your desired configuration values. All the infrastructure customization happens through this single file.
 
-```hcl
-module "rds_mysql" {
-  source = "./path-to-module"
+The module is already configured in `main.tf` to reference all variables from `terraform.tfvars`, so no changes to the module definition are needed. Just update the variable values in `terraform.tfvars` to match your environment and requirements, then run:
 
-  region = "us-east-1"
-
-  vpc-config = {
-    vpc-name   = "my-database-vpc"
-    cidr_block = "10.0.0.0/16"
-  }
-
-  private-subnets = {
-    private-subnet-1 = {
-      cidr_block        = "10.0.1.0/24"
-      subnet-name       = "Private Subnet 1"
-      availability-zone = "us-east-1a"
-    }
-    private-subnet-2 = {
-      cidr_block        = "10.0.2.0/24"
-      subnet-name       = "Private Subnet 2"
-      availability-zone = "us-east-1b"
-    }
-  }
-
-  security-group-config = {
-    security-group-name        = "rds-mysql-sg"
-    security-group-description = "Security group for RDS MySQL"
-  }
-
-  rds-mysql-config = {
-    allocated_storage = 20
-    db_name           = "mydatabase"
-    engine            = "mysql"
-    engine_version    = "8.0"
-    instance_class    = "db.t3.micro"
-    username          = "admin"
-    password          = "YourSecurePassword123!"
-    skip_final_snapshot = false
-    multi_az          = true
-  }
-
-  db_snapshot_identifier = "mysql-snapshot-$(date +%s)"
-}
+```bash
+terraform init
+terraform plan
+terraform apply
 ```
 
 ## Inputs
