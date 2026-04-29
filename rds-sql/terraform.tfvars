@@ -6,8 +6,6 @@ vpc-sg = {
 
   ingress_cidr_blocks = ["10.10.0.0/16"]
   ingress_rules       = ["https-443-tcp"]
-  # Remove ingress_with_cidr_blocks and egress_with_cidr_blocks from tfvars
-  # They're now defined directly in the module
 }
 
 rds-config = {

@@ -8,7 +8,6 @@ variable "vpc-sg" {
     description         = string
     ingress_cidr_blocks = list(string)
     ingress_rules       = list(string)
-    # Remove complex objects - define them directly in the module
   })
 }
 
