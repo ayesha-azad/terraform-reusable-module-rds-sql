@@ -1,4 +1,4 @@
 output "vpc-name" {
-  value = module.vpc.name
-  description = "This is the new VPC that I made"
+  value       = module.security-group
+  description = "This is the new RDS that I made"
 }
